@@ -5,3 +5,4 @@
 ## Fundamentals
 - [Intro](/tutorial/intro.md)
 - [Django Architecture](/tutorial/structure.md)
+- [HTTP Basics](/tutorial/http.md)
