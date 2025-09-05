@@ -6,5 +6,7 @@
 - [Intro](/tutorial/intro.md)
 - [Django Architecture](/tutorial/structure.md)
 - [HTTP Basics](/tutorial/http.md)
-- [Simple View Structure](/tutorial/simple-view.md)
+- [View](/tutorial/view.md)
 - [URLs](/tutorial/url.md)
+- [App](/tutorial/app.md)
+- [Template](/tutorial/template.md)

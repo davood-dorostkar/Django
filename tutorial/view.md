@@ -27,6 +27,16 @@ urlpatterns = [
 ]
 ```
 
+### 📌 Best Practice
+if you are writing a view inside an app, and you have a `urls` inside that app, you can write it this way:
+```py
+from app import views
+
+urlpatterns = [
+    path('', views.main_view),
+]
+```
+
 
 ## 2. Writing a Simple View
 
