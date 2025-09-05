@@ -154,4 +154,20 @@ This makes maintenance easier across multiple pages.
 * Use template inheritance (`{% extends %}`, `{% block %}`) for DRY code.
 * Access project settings via `from django.conf import settings`.
 
+## Template Resources
 
+>keyword: html template download
+
+- colorlib
+- themeforest
+- bootstrapmade
+- elements.envato
+- html5up
+- templatemo
+
+### Download templates from preview
+if you don't want to pay, take the preview page of the template, then:
+```sh
+wget –r url_to_website
+```
+>it may not work.
