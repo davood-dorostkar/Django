@@ -47,9 +47,8 @@ TEMPLATES = [
    ```
    blog/
        templates/
-           blog/
-               index.html
-               post_detail.html
+            index.html
+            post_detail.html
    ```
 
    ✅ Namespacing (having a `blog/` subfolder) is recommended to avoid conflicts across apps.
@@ -57,12 +56,19 @@ TEMPLATES = [
 2. **Global templates**
    You can also have a global `templates/` directory in your project root:
 
-   ```
-   project/
-       templates/
-           base.html
-           home.html
-   ```
+```sh
+.
+├── project/
+│   ├── ...
+├── app_name/
+│   ├── ...
+├── templates/ # HERE
+│   ├── base.html
+│   └── home.html
+├── db.sqlite3
+├── manage.py
+├── requirements.txt
+```
 
    Then add it to `DIRS` in `settings.py`:
 
@@ -137,41 +143,6 @@ Django supports **template inheritance** to avoid repeating common HTML.
 ```
 
 This makes maintenance easier across multiple pages.
-
-
-## Using Django Settings in Views
-
-Sometimes you need access to project settings inside your views.
-
-### Proper Usage Examples
-
-**Correct way:**
-```python
-from django.conf import settings
-
-def my_view(request):
-    media_root = settings.MEDIA_ROOT
-    base_dir = settings.BASE_DIR
-    debug_mode = settings.DEBUG
-```
-
-**Also correct** (for frequently used settings):
-```python
-from django.conf import settings
-
-BASE_DIR = settings.BASE_DIR
-DEBUG = settings.DEBUG
-```
-
-### Key Differences
-
-| Aspect | `from project import settings` | `from django.conf import settings` |
-|--------|--------------------------------|-------------------------------------|
-| **Circular imports** | High risk | No risk |
-| **Environment support** | Poor (hardcoded) | Excellent |
-| **Default values** | Doesn't use Django defaults | Uses Django defaults |
-| **Best practice** | ❌ Not recommended | ✅ Recommended |
-| **Testing** | Problems with test settings | Works with test settings |
 
 ## Summary
 
