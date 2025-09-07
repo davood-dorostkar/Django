@@ -13,4 +13,4 @@
 - [Template](/tutorial/template.md)
 - [Static & Media](/tutorial/static-media.md)
 - [Template Inheritance](/tutorial/extend-templates.md)
-- [URL Templates](/tutorial/url-template.md)
+- [Dynamic URL](/tutorial/url-template.md)

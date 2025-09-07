@@ -1,4 +1,4 @@
-# Django URL Templates
+# Dynamic URL (URL Templates)
 
 Hardcoding links in your HTML (`<a href="/blog/post/1/">`) is fragile — if your URL structure changes, you’d have to update it everywhere.
 
