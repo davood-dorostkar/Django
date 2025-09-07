@@ -11,3 +11,4 @@
 - [View](/tutorial/view.md)
 - [App](/tutorial/app.md)
 - [Template](/tutorial/template.md)
+- [Static & Media](/tutorial/static-media.md)
