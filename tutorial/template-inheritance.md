@@ -47,6 +47,7 @@ Here, we defined **blocks**:
 * `content` → main content area
 * `scripts` → custom JavaScript per page
 
+>The block name in `endblock` is optional (`{% endblock }`)
 
 ## Extending a Parent Template
 
