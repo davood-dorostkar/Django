@@ -206,6 +206,13 @@ Django development server finds and serves these files from:
             alias /path/to/myproject/staticfiles/;
             expires 30d;
         }
+
+        # Media files location - served directly by Nginx
+        location /media/ {
+            alias /path/to/myproject/media/;
+            expires 1d;
+            add_header Cache-Control "public";
+        }
         
         # Pass dynamic requests to Django
         location / {
