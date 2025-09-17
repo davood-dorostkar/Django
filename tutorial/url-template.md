@@ -8,8 +8,7 @@ Instead, Django provides the **`{% url %}` template tag**, which dynamically gen
 ## Defining URL Names in `urls.py`
 
 Each `path()` can be given a `name`.
-Example: `blog/urls.py`
-
+Example: 
 ```python
 from django.urls import path
 from . import views
@@ -21,7 +20,7 @@ urlpatterns = [
 
 Here we defined a named URL:
 
-* `"index"` → `/blog/`
+* name `"index"` → points to `/`
 
 
 ## Using `{% url %}` in Templates
@@ -32,7 +31,7 @@ Now, instead of hardcoding paths, use `{% url %}` with the **view name**.
 
 ```django
 <ul>
-    <li><a href="{% url 'blog:index' %}">Home</a></li>
+    <li><a href="{% url 'index' %}">Home</a></li>
 </ul>
 ```
 
@@ -40,7 +39,7 @@ This generates:
 
 ```html
 <ul>
-    <li><a href="/blog/">Home</a></li>
+    <li><a href="/">Home</a></li>
 </ul>
 ```
 
@@ -129,10 +128,10 @@ Both resolve to:
 
 ## Best Practices
 
-✅ Always use `{% url %}` instead of hardcoding links.
-✅ Use `app_name` in each app’s `urls.py` to avoid naming conflicts.
-✅ Prefer **keyword arguments** for readability.
-✅ If you rename or restructure URLs, templates won’t break as long as names remain consistent.
+- ✅ Always use `{% url %}` instead of hardcoding links.
+- ✅ Use `app_name` in each app’s `urls.py` to avoid naming conflicts.
+- ✅ Prefer **keyword arguments** for readability.
+- ✅ If you rename or restructure URLs, templates won’t break as long as names remain consistent.
 
 
 ## Quick Example: Full Setup
