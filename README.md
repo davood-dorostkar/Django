@@ -14,3 +14,4 @@
 - [Static & Media](/tutorial/static-media.md)
 - [Template Inheritance](/tutorial/extend-templates.md)
 - [Dynamic URL](/tutorial/url-template.md)
+- [Dynamic Data Pass](/tutorial/dyn-data-pass.md)
