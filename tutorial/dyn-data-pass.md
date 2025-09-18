@@ -1,4 +1,4 @@
-# Django: Passing Dynamic Data to Templates
+# Passing Dynamic Data to Templates
 
 Django lets you send data from your **views** (Python code) into your **templates** (HTML files).
 This is done using the **`context`** parameter in the `render()` function.

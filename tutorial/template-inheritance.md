@@ -1,6 +1,3 @@
-Got it 👍 Let’s take your notes on **Template Inheritance** and expand them into a structured **Django Template Inheritance Tutorial** with explanations, examples, and best practices.
-
-
 # Django Template Inheritance
 
 Django’s template inheritance system lets you **reuse common structures** (like headers, footers, navigation bars) across multiple pages, while customizing only the parts that change.

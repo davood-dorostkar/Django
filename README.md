@@ -13,11 +13,12 @@
 - [App](/tutorial/app.md)
 
 ## Data and Template
+- [Template Tags](/tutorial/template-tag.md)
 - [Template](/tutorial/template.md)
 - [Static & Media](/tutorial/static-media.md)
-- [Template Inheritance](/tutorial/extend-templates.md)
+- [Template Inheritance](/tutorial/template-inheritance.md)
 - [Dynamic URL](/tutorial/url-template.md)
-- [Dynamic Data Pass](/tutorial/dyn-data-pass.md)
+- [Passing Dynamic Data to Templates](/tutorial/dyn-data-pass.md)
 
 ## Database and Admin
 - [MakeMigration & Migrate](/tutorial/migrate.md)
@@ -25,3 +26,4 @@
 - [Models](/tutorial/model.md)
 - [Interacting with Models](/tutorial/db-interact.md)
 - [Admin](/tutorial/admin.md)
+- [Model Meta Class](/tutorial/meta.md)
