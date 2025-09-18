@@ -1,5 +1,6 @@
 # Django
 
+![](/tutorial/img/django-logo.webp)
 
 ## Fundamentals
 
