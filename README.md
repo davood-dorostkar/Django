@@ -22,4 +22,5 @@
 - [MakeMigration & Migrate](/tutorial/migrate.md)
 - [ORM & Superuser](/tutorial/orm.md)
 - [Models](/tutorial/model.md)
-- []
+- [Interacting with Models](/tutorial/db-interact.md)
+- [Admin](/tutorial/admin.md)

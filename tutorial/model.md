@@ -37,6 +37,7 @@ This will create a table named **`appname_student`** with columns: `id`, `name`,
 
 ![](/tutorial/img/db-field-names.png)
 
+>By default, the `id` field is generated automatically from 1 and increasing. When you delete an object, django knows that that id is deleted and must not be used again.
 
 ## Model Options
 
@@ -129,6 +130,15 @@ class Profile(models.Model):
 
 * Deleting the user will also delete the profile.
 
+## Model Methods
+We can also define methods in a model or override existing ones (like `__str__`).
+
+```py
+class Post(models.Model):
+  …
+  def __str__(self):
+        return self.title
+```
 
 ## Read More
 
