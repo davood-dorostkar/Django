@@ -1,9 +1,9 @@
 # Django
 
-- [Python Review](/tutorial/python-review.md)
 
 ## Fundamentals
 
+- [Python Review](/tutorial/python-review.md)
 - [Intro](/tutorial/intro.md)
 - [Django Architecture](/tutorial/structure.md)
 - [HTTP Basics](/tutorial/http.md)
@@ -20,3 +20,6 @@
 
 ## Database and Admin
 - [MakeMigration & Migrate](/tutorial/migrate.md)
+- [ORM & Superuser](/tutorial/orm.md)
+- [Models](/tutorial/model.md)
+- []

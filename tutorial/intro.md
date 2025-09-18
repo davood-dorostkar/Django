@@ -28,6 +28,43 @@ run it:
 python manage.py migrate
 python manage.py runserver
 ```
+## Access Django Shell
+### 🔹 Simple Shell
+```sh
+python manage.py shell
+```
+
+* Starts a Python shell **with your Django environment loaded**.
+* Automatically:
+
+  * Loads Django settings.
+  * Calls `django.setup()`.
+  * Makes your models, database connections, and other Django components ready to use.
+
+```bash
+$ python manage.py shell
+>>> from myapp.models import User
+>>> print('hello')
+```
+### 🔹 Shell Plus
+```sh
+python manage.py shell_plus #(from django-extensions package)
+```
+
+* Like `shell`, but even better:
+
+  * Automatically imports all models and useful utilities.
+  * Can use IPython, bpython, or ptpython for a richer shell.
+
+```bash
+$ python manage.py shell -i ipython
+
+# or if installed django-extensions
+$ python manage.py shell_plus --ipython
+
+>>> from myapp.models import User
+>>> print('hello')
+```
 
 ## 📑 Django Cheat Sheets
 
