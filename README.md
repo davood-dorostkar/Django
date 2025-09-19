@@ -27,3 +27,6 @@
 - [Interacting with Models](/tutorial/db-interact.md)
 - [Admin](/tutorial/admin.md)
 - [Model Meta Class](/tutorial/meta.md)
+
+## Advanced Database & Views
+- [Dynamical Page Manipulation](/tutorial/dyn-data-url.md)

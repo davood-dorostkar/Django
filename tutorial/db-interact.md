@@ -135,3 +135,8 @@ Post.objects.filter(title="Django").exists()
 * QuerySets behave like **lists**, but are powerful database queries under the hood.
 
 ✅ With Django ORM, you can manage your database using **Python objects** instead of writing raw SQL.
+
+## Read More
+A good reference of django model queries:
+
+[link](https://docs.djangoproject.com/en/3.2/ref/models/querysets/)

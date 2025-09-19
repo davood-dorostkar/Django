@@ -97,6 +97,7 @@ class Post(models.Model):
 ```
 
 * `on_delete=models.CASCADE` → If the author is deleted, all related posts are also deleted.
+* `on_delete=models.SET_NULL` → If the author is deleted, all related posts' authors will be set to null.
 
 
 ### 2. ManyToManyField (Many-to-Many)
