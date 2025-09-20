@@ -86,6 +86,24 @@ MEDIA_URL = '/media/'   # URL prefix
 MEDIA_ROOT = BASE_DIR / 'media'  # Folder to store uploaded 
 ```
 
+⚠️ If you don't define `MEDIA_ROOT`, django will use the base project directory as media path. Effectively the media files will be located besides your apps' folders. For example if you define in the DB (and you didn't define `MEDIA_ROOT`):
+```py
+class Image(models.Model):
+    image = models.ImageField(upload_to="img/")
+```
+
+your files will be like:
+```
+.
+├── app
+├── db.sqlite3
+├── img
+├── manage.py
+├── project
+└── requirements.txt
+```
+
+
 **Example usage in a template**:
 
 ```html

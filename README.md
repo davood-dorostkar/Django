@@ -24,7 +24,8 @@
 - [MakeMigration & Migrate](/tutorial/migrate.md)
 - [ORM & Superuser](/tutorial/orm.md)
 - [Models](/tutorial/model.md)
-- [Interacting with Models](/tutorial/db-interact.md)
+- [Model Relations](/tutorial/model-relation.md)
+- [Models CRUD](/tutorial/db-interact.md)
 - [Admin](/tutorial/admin.md)
 - [Model Meta Class](/tutorial/meta.md)
 
