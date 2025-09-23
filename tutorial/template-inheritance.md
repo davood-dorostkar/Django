@@ -89,13 +89,41 @@ This keeps whatever was inside `head` in the parent and adds new CSS.
 
 ## Including Other Templates
 
+### What is `include`?
+
+* `extends` → defines a **base template** that child templates build upon.
+* `include` → inserts a **module (partial template)** into another template.
+
+This is useful for repeating components like ads, navigation bars, or footers.
+
 `{% include %}` inserts another template file directly. Useful for **repeated components** like headers, navbars, or sidebars.
 
-Example:
+### Example
 
-```django
-{% include "navbar.html" %}
+**ads.html**
+
+```html
+<div class="ad-banner">
+    <img src="{% static 'images/ad.png' %}" alt="Advertisement">
+</div>
 ```
+
+**base.html**
+
+```html
+{% load static %}
+<html>
+  <body>
+    <h1>My Website</h1>
+    {% include 'ads.html' %}
+  </body>
+</html>
+```
+
+### Notes
+
+* Always use `{% load static %}` in both the **included file** and the **including file** if static files are used.
+* `include` does not inherit blocks; it just injects the content as-is.
 
 
 ## Important Note: Loading Static Files

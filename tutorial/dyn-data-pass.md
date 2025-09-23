@@ -54,22 +54,6 @@ Inside the template (`home.html`), use **double curly braces** `{{ }}` to insert
 </html>
 ```
 
-
-## Special Template Syntax
-
-* `{{ ... }}` → for **data output** (variables, expressions)
-* `{% ... %}` → for **logic and functionality** (loops, conditionals, template tags)
-
-### Example:
-
-```django
-<p>{{ username }}</p>          <!-- Displays: Alice -->
-{% if items %}                <!-- Checks if list is not empty -->
-    <p>You have {{ items|length }} items.</p>
-{% endif %}
-```
-
-
 ## Full Workflow
 
 1. **Browser requests page** → `/`

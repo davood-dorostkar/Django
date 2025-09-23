@@ -6,6 +6,19 @@ It’s **inspired by Jinja2**, but slightly different.
 * **Jinja2** is a separate template engine (popular in Flask, can be used in Django).
 * **Django Templates** include tags, filters, variables — similar syntax.
 
+## DTL Template Syntax
+
+* `{{ ... }}` → for **data output** (variables, expressions)
+* `{% ... %}` → for **logic and functionality** (loops, conditionals, template tags)
+
+### Example:
+
+```django
+<p>{{ username }}</p>          <!-- Displays: Alice -->
+{% if items %}                <!-- Checks if list is not empty -->
+    <p>You have {{ items|length }} items.</p>
+{% endif %}
+```
 
 ## Django Template Syntax Quick Reference
 

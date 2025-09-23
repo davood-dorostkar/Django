@@ -288,6 +288,47 @@ with open('names.txt','a',encoding='utf-8') as f:
         f.write(name.text + "\n")
 ```
 
+Here’s a polished tutorial for **Python’s Walrus Operator (`:=`)** integrated into Django context usage:
+
+
+## 📝 Python Walrus Operator (`:=`)
+
+The **walrus operator** (`:=`) allows you to **assign a value to a variable as part of an expression**. This can reduce redundancy, especially in `if` statements, loops, or template-related filtering in Django.
+
+
+### 1. Basic Example
+
+Instead of writing:
+
+```python
+value = len(my_list)
+if value > 10:
+    print(f"List is too long ({value} items)")
+```
+
+You can use the **walrus operator**:
+
+```python
+if (value := len(my_list)) > 10:
+    print(f"List is too long ({value} items)")
+```
+
+* `value := len(my_list)` assigns `len(my_list)` to `value` **while checking the condition**.
+* Cleaner and avoids computing `len(my_list)` twice.
+
+### 2. Loops with Walrus Operator
+
+```python
+while (line := file.readline().strip()) != "":
+    print(line)
+```
+
+### 3. Key Points
+
+* Only available in **Python 3.8+**
+* Useful to **assign variables inside expressions**
+* Reduces repetition and makes code cleaner
+
 
 ## 📑 Python Cheat Sheets
 

@@ -1,4 +1,4 @@
-# 📝 Django Views – The Basics
+# 📝 Django Views 
 
 In Django, a **view** is just a Python function (or class) that takes a web request and returns a web response.
 
