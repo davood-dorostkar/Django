@@ -1,6 +1,6 @@
 # Django
 
-![](/tutorial/img/django-logo.webp)
+![](/tutorial/img/django.jpg)
 
 ## Fundamentals
 - [Python Review](/tutorial/python-review.md)
