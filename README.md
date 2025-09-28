@@ -41,3 +41,7 @@
 - [Model Forms](/tutorial/model-form.md)
 - [Crispy Forms Extension](/tutorial/crispy-form.md)
 - [Messages Framework](/tutorial/messages.md)
+
+## Django Modules
+- [Humanize](/tutorial/humanize.md)
+- [Django Extensions](/tutorial/extensions.md)
