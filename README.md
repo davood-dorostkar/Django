@@ -35,7 +35,9 @@
 - [Meta Class](/tutorial/meta.md)
 - [Using Model Data](/tutorial/using-models.md)
 
-## Sessions
+## Forms
+- [Naive Forms](/tutorial/naive-form.md)
+- [Simple Forms](/tutorial/simple-form.md)
+- [Model Forms](/tutorial/model-form.md)
+- [Crispy Forms Extension](/tutorial/crispy-form.md)
 - [Messages Framework](/tutorial/messages.md)
-
-

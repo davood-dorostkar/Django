@@ -18,6 +18,10 @@ def submit_form(request):
     messages.error(request, "Something went wrong.")
     return redirect("home")
 ```
+**Alternative syntax**:
+```py
+messages.add_message(request, messages.SUCCESS, 'submitted!')
+```
 
 **template.html**
 
@@ -25,12 +29,42 @@ def submit_form(request):
 {% if messages %}
   <ul>
     {% for message in messages %}
-      <li>{{ message }}</li>
+      <li>
+        {% if message.tags %} 
+            class="{{ message.tags }}"
+        {% endif %}
+        {{ message }}
+      </li>
     {% endfor %}
   </ul>
 {% endif %}
 ```
+**Another method**:
+```django
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+  {% endif %}
 
+  {% if form.errors %}
+    <div class="alert alert-error">
+      <h4>Please fix the following errors</h4>
+      <ul>
+        {% for field in form %}
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+    </div>
+  {% endif %}
+```
 Django automatically attaches message levels such as:
 
 * `messages.debug`
