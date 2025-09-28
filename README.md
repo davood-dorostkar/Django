@@ -42,6 +42,11 @@
 - [Crispy Forms Extension](/tutorial/crispy-form.md)
 - [Messages Framework](/tutorial/messages.md)
 
+## Web Indexing
+- [Sites Framework](/tutorial/sites.md)
+- [Sitemap Framework](/tutorial/sitemap.md)
+- [Robots.txt](/tutorial/robots.md)
+
 ## Django Modules
 - [Humanize](/tutorial/humanize.md)
 - [Django Extensions](/tutorial/extensions.md)
