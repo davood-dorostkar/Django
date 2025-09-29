@@ -48,5 +48,12 @@
 - [Robots.txt](/tutorial/robots.md)
 
 ## Django Modules
+- [Customize Third Party Packages](/tutorial/third-party-app.md)
 - [Humanize](/tutorial/humanize.md)
 - [Django Extensions](/tutorial/extensions.md)
+- [Debug Toolbar](/tutorial/debug-toolbar.md)
+- [Manage Tags with Taggit](/tutorial/taggit.md)
+- [Rich Text Editor for Contents](/tutorial/rich-text-editor.md)
+- [Captcha](/tutorial/captcha.md)
+- [Commenting](/tutorial/comment.md)
+- [RSS](/tutorial/rss.md)
