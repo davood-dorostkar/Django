@@ -18,6 +18,7 @@
 - [Template Inheritance](/tutorial/template-inheritance.md)
 - [Dynamic Links](/tutorial/url-template.md)
 - [Dynamic URLs](/tutorial/dynamic-url.md)
+- [Reverse](/tutorial/reverse.md)
 - [Handle Dynamic URLs in Views](/tutorial/view-kwargs.md)
 - [Passing Data to Templates](/tutorial/dyn-data-pass.md)
 - [Custom Template Tags](/tutorial/custom-tags.md)
@@ -46,6 +47,13 @@
 - [Sites Framework](/tutorial/sites.md)
 - [Sitemap Framework](/tutorial/sitemap.md)
 - [Robots.txt](/tutorial/robots.md)
+
+## Authentication
+- [Fundamentals](/tutorial/auth.md)
+- [Implementation: Manual](/tutorial/manual-auth.md)
+- [Implementation: Use Third-Party App](/tutorial/allauth.md)
+- [Implementation: Use Builtin App](/tutorial/contrib-auth.md)
+- [Auth Decorators](/tutorial/auth-decorators.md)
 
 ## Django Modules
 - [Customize Third Party Packages](/tutorial/third-party-app.md)

@@ -21,20 +21,7 @@ The **Sitemap Framework** is a built-in Django app that helps you generate **XML
 2. Ensure the **Sites Framework** is already configured (`SITE_ID`, domain in admin).
 
 
-## 2. What is `reverse`?
-
-* Django’s `reverse()` is used to **dynamically build URLs** from named URL patterns.
-* Example:
-
-  ```python
-  from django.urls import reverse
-
-  reverse("home")  # returns "/"
-  reverse("blog_detail", kwargs={"id": 5})  # returns "/blog/5/"
-  ```
-
-
-## 3. Creating Sitemaps
+## 2. Creating Sitemaps
 
 ### A. Static Pages
 
@@ -126,7 +113,7 @@ sitemaps = {
 ```
 
 
-## 4. Sitemap Attributes
+## 3. Sitemap Attributes
 
 * **`changefreq`** → `always`, `hourly`, `daily`, `weekly`, `monthly`, `yearly`, `never`
 * **`priority`** → importance (`0.0` – `1.0`)
@@ -135,6 +122,6 @@ sitemaps = {
 * **`lastmod()`** → returns datetime for last modified pages
 
 
-## 5. Read More
+## 4. Read More
 
 * [Official Docs – Django Sitemaps](https://docs.djangoproject.com/en/3.2/ref/contrib/sitemaps)
