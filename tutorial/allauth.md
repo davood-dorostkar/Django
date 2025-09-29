@@ -28,13 +28,14 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-# AllAuth settings
-LOGIN_REDIRECT_URL = "/"   # redirect after login
+# AllAuth optional configurations
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+LOGIN_REDIRECT_URL = "/"   # redirect after login
+LOGOUT_REDIRECT_URL = "/"
 ```
-
+### urls.py
 ```python
 # project/urls.py
 from django.urls import path, include
@@ -50,24 +51,28 @@ urlpatterns = [
 
 AllAuth provides ready-made views:
 
-```html+django
-<!-- login.html -->
-<h2>Login</h2>
+* **Login URL:** `/accounts/login/`
+* **Logout URL:** `/accounts/logout/`
+
+Template snippet for login (optional if you use default AllAuth template):
+
+```django
 <form method="post" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
 </form>
-
-<a href="{% url 'account_logout' %}">Logout</a>
 ```
 
 
 ## 3. Signup
+* **Signup URL:** `/accounts/signup/`
+* **Email verification** can be enabled via `ACCOUNT_EMAIL_VERIFICATION = "mandatory"`
+* Users receive a verification email to activate their account.
 
-```html+django
+```django
 <!-- signup.html -->
-<h2>Sign Up</h2>
+
 <form method="post" action="{% url 'account_signup' %}">
     {% csrf_token %}
     {{ form.as_p }}
@@ -78,7 +83,11 @@ AllAuth provides ready-made views:
 
 ## 4. Email Verification
 
-* After signup, AllAuth sends a verification email.
+AllAuth handles email verification automatically:
+
+* Email is sent on signup.
+* User cannot login until the email is verified (if `mandatory` is set).
+* You can customize the email templates in `templates/account/email/`.
 * You must configure email backend:
 
 ```python
@@ -92,19 +101,20 @@ Users get an email with a confirmation link.
 
 ## 5. Password Reset (Forgot Password)
 
-AllAuth includes password reset views:
+* **Password reset URL:** `/accounts/password/reset/`
+* Django AllAuth provides the full workflow:
 
-```html+django
-<!-- password_reset.html -->
-<h2>Forgot Password?</h2>
+  * request reset → email with token → enter new password.
+
+Example template usage:
+
+```django
 <form method="post" action="{% url 'account_reset_password' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Reset</button>
+    <button type="submit">Reset Password</button>
 </form>
 ```
-
-✅ This will send a reset link to the user’s email.
 
 
 ## 6. Integrating Captcha
@@ -144,7 +154,7 @@ class CustomSignupForm(SignupForm):
         user = super().save(request)
         return user
 ```
-
+Then add to settings:
 ```python
 # settings.py
 ACCOUNT_FORMS = {
@@ -155,11 +165,38 @@ ACCOUNT_FORMS = {
 Now the signup page will display a captcha.
 
 
-## 7. Other Features (etc.)
+## 7. Social Authentication (Optional)
 
-* **Social logins** (Google, GitHub, Facebook, etc.) via `allauth.socialaccount`.
-* **Custom redirect after login/logout** with `LOGIN_REDIRECT_URL` and `ACCOUNT_SIGNUP_REDIRECT_URL`.
-* **Custom email templates** by overriding:
+You can integrate social login providers like Google, Facebook, GitHub:
 
-  * `account/email/email_confirmation_message.txt`
-  * `account/email/password_reset_key_message.txt`
+```python
+INSTALLED_APPS += [
+    "allauth.socialaccount.providers.google",
+]
+
+# Then configure client id and secret in admin
+```
+
+
+## 8. Templates
+
+AllAuth provides default templates. You can override by creating:
+
+```
+templates/account/login.html
+templates/account/signup.html
+templates/account/email/email_confirmation_message.txt
+```
+
+
+## 9. Additional Settings and Customization
+
+* `ACCOUNT_USERNAME_REQUIRED = False` → if you want signup via email only
+* `ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True/False`
+* Customize redirects with `LOGIN_REDIRECT_URL` and `LOGOUT_REDIRECT_URL`
+
+
+## Read More
+
+* [Django AllAuth Documentation](https://django-allauth.readthedocs.io/en/latest/)
+* [Django AllAuth GitHub](https://github.com/pennersr/django-allauth)

@@ -3,19 +3,32 @@
 Django provides a **ready-to-use authentication system** that handles login, logout, password reset, and user management. You can extend it with your own templates, views, and forms.
 
 
-## 1. Define in URLs
+## 1. Setup
 
-Django comes with built-in authentication URLs. You just need to include them:
+### urls.py
+
+Add Django's auth URLs:
 
 ```python
-# project/urls.py
 from django.urls import path, include
 
 urlpatterns = [
-    ...
-    path("accounts/", include("django.contrib.auth.urls")),
+    path('accounts/', include('django.contrib.auth.urls')),  # login, logout, password management
 ]
 ```
+
+Django provides the following default URLs:
+
+| URL Name                  | Purpose                       |
+| ------------------------- | ----------------------------- |
+| `login`                   | Login page                    |
+| `logout`                  | Logout page                   |
+| `password_change`         | Change password page          |
+| `password_change_done`    | Password changed confirmation |
+| `password_reset`          | Reset password page           |
+| `password_reset_done`     | Reset email sent confirmation |
+| `password_reset_confirm`  | Password reset confirm page   |
+| `password_reset_complete` | Password reset completed page |
 
 
 ## 2. List of Existing URLs
@@ -34,19 +47,24 @@ The following URLs are automatically available:
 
 ## 3. Templates Folder
 
-Create `templates/registration/` and add corresponding templates:
+Create a `registration` folder inside your templates directory:
 
-* `login.html`
-* `logout.html`
-* `password_change_form.html`
-* `password_reset_form.html`
-* `password_reset_confirm.html`
-* `password_reset_done.html`
-* `password_reset_complete.html`
+```
+templates/
+└── registration/
+    ├── login.html
+    ├── logged_out.html
+    ├── password_reset_form.html
+    ├── password_reset_done.html
+    ├── password_reset_confirm.html
+    ├── password_reset_complete.html
+```
+
+These templates override Django’s defaults.
 
 ### Example `login.html`
 
-```html+django
+```django
 <h2>Login</h2>
 <form method="post">
     {% csrf_token %}
@@ -57,7 +75,7 @@ Create `templates/registration/` and add corresponding templates:
 
 ### Example `logout.html`
 
-```html+django
+```django
 <h2>Logged out</h2>
 <p>You have been logged out successfully.</p>
 <a href="{% url 'login' %}">Login again</a>
@@ -85,29 +103,51 @@ if user:
 
 Handled automatically via `django.contrib.auth.views.LoginView` and `LogoutView`.
 
-* Login → `{% url 'login' %}`
-* Logout → `{% url 'logout' %}`
+### Login view (provided by Django)
 
+```html
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+```
+
+* **Redirect after login:**
+  Add to `settings.py`:
+
+```python
+LOGIN_REDIRECT_URL = '/'  # after login
+LOGOUT_REDIRECT_URL = '/'  # after logout
+```
+
+* Check authentication in template:
+
+```django
+{% if user.is_authenticated %}
+  Hello, {{ user.username }}!
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+{% endif %}
+```
 
 ## 6. Signup (Custom)
 
 Django does not provide signup by default. You need a custom view:
 
 ```python
-# accounts/views.py
-from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-def signup_view(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        password = request.POST["password"]
-        user = User.objects.create_user(username=username, email=email, password=password)
-        login(request, user)
-        return redirect("/")
-    return render(request, "registration/signup.html")
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
 ```
 
 ```python
@@ -122,7 +162,7 @@ urlpatterns = [
 
 ### `signup.html`
 
-```html+django
+```django
 <h2>Sign Up</h2>
 <form method="post">
     {% csrf_token %}
@@ -159,14 +199,18 @@ Example (console backend for testing):
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ```
 
+For easier setup, **Django AllAuth** handles email verification automatically.
 
 ## 9. Password Reset (Forgot Password)
 
-Already included in `django.contrib.auth.urls`.
+Already included in `django.contrib.auth.urls`. Django provides built-in views for:
+
+* Changing password (`password_change`)
+* Resetting password via email (`password_reset`)
 
 Example:
 
-```html+django
+```django
 <form method="post" action="{% url 'password_reset' %}">
     {% csrf_token %}
     {{ form.as_p }}

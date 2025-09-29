@@ -80,23 +80,10 @@ urlpatterns = [
 
 
 ## 6. Write Views
-
+**Login View:**
 ```python
-# accounts/views.py
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-
-def signup_view(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        password = request.POST["password"]
-        user = User.objects.create_user(username=username, email=email, password=password)
-        login(request, user)
-        return redirect("/")
-    return render(request, "accounts/signup.html")
-
+from django.contrib.auth import authenticate, login
 
 def login_view(request):
     if request.method == "POST":
@@ -105,6 +92,23 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect("/")
+            return redirect("home")
     return render(request, "accounts/login.html")
+```
+**Signup View:**
+```py
+from django.contrib.auth.models import User
+
+def signup_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password1 = request.POST["password1"]
+        password2 = request.POST["password2"]
+
+        if password1 == password2:
+            user = User.objects.create_user(username=username, email=email, password=password1)
+            return redirect("login")
+    return render(request, "accounts/signup.html")
+
 ```

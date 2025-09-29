@@ -2,27 +2,30 @@
 
 Django provides **authentication decorators** to restrict access to views based on user authentication or permissions. They are a simple yet powerful way to protect views without writing repetitive checks.
 
----
+They can be used with:
 
-## 🔹 What Are They?
+* **Function-based views (FBVs)** — most common usage.
+* **Class-based views (CBVs)** — used via `method_decorator` on specific methods.
 
-* **Decorators** wrap views with extra functionality.
-* **Auth decorators** ensure only authenticated or authorized users can access certain views.
-* If a condition fails (e.g., user not logged in), the decorator redirects or returns an error response.
+## Usage (Function-based views)
 
----
+apply decorators directly:
 
-## 🔹 Function-Based Views vs Class-Based Views
+```python
+@login_required
+def dashboard(request):
+    ...
+```
+* Optional custom login URL:
 
-* **Function-Based Views (FBV)** → apply decorators directly:
+```python
+@login_required(login_url='/accounts/login/')
+def dashboard(request):
+    ...
+```
+## Usage (Class-based views)
 
-  ```python
-  @login_required
-  def dashboard(request):
-      ...
-  ```
-
-* **Class-Based Views (CBV)** → use `@method_decorator` on `dispatch` (or individual methods):
+use `@method_decorator` on `dispatch` (or individual methods):
 
   ```python
   from django.utils.decorators import method_decorator
@@ -35,9 +38,8 @@ Django provides **authentication decorators** to restrict access to views based 
           ...
   ```
 
----
 
-## 1. `login_required`
+## `login_required`
 
 The most common decorator.
 
@@ -73,9 +75,15 @@ class ProfileView(View):
         return HttpResponse("Profile Page")
 ```
 
----
 
-## 2. Other Important Decorators
+### Notes:
+
+* `login_required` **does not check** the `is_active` flag on users.
+
+  * The default `AUTHENTICATION_BACKENDS` automatically prevent inactive users from logging in.
+* For admin-like views, you can use `staff_member_required()` instead.
+* 
+## Other Important Auth Decorators
 
 | Decorator                                | Purpose                                                                                               | Example                                               |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -83,12 +91,32 @@ class ProfileView(View):
 | `@permission_required("app.permission")` | Require specific permission. Redirects to login if not logged in, raises `403` if permission missing. | `@permission_required("blog.add_post")`               |
 | `@user_passes_test(test_func)`           | Require custom condition (returns `True`/`False`).                                                    | `@user_passes_test(lambda u: u.is_superuser)`         |
 | `@staff_member_required`                 | Require `is_staff=True`. Commonly used for admin-only views.                                          | `@staff_member_required def admin_view(request): ...` |
+| `login_required` + `@permission_required`              | Combine decorators          | Can chain multiple decorators on a view    
 
----
+### Example with permission:
 
-## ✅ Key Notes
+```python
+from django.contrib.auth.decorators import permission_required
 
-* `login_required` does **not** check `is_active`. Inactive users are rejected by auth backends.
-* You can customize the login page with `settings.LOGIN_URL` or `login_url` argument.
-* For **admin-like restrictions**, use `staff_member_required`.
-* For **granular control**, use `permission_required` or `user_passes_test`.
+@permission_required('blog.change_post', raise_exception=True)
+def edit_post(request, post_id):
+    ...
+```
+
+### Example with custom test:
+
+```python
+from django.contrib.auth.decorators import user_passes_test
+
+def is_superuser(user):
+    return user.is_superuser
+
+@user_passes_test(is_superuser)
+def super_dashboard(request):
+    ...
+```
+
+## Read More
+
+* [Django Authentication Decorators](https://docs.djangoproject.com/en/3.2/topics/auth/default/#the-login-required-decorator)
+* [Django Permissions and Authorization](https://docs.djangoproject.com/en/3.2/topics/auth/default/#permissions)
