@@ -65,3 +65,18 @@
 - [Captcha](/tutorial/captcha.md)
 - [Commenting](/tutorial/comment.md)
 - [RSS](/tutorial/rss.md)
+
+## Deployment
+- [Fundamentals](/tutorial/deploy-fundamental.md)
+- [Dev/Prod Seperation](/tutorial/dev-prod-seperate.md)
+- [CPanel](/tutorial/cpanel.md)
+- [Optimization](/tutorial/optimization.md)
+- [Switch Database](/tutorial/db-change.md)
+- [Security](/tutorial/security.md)
+
+
+## 🎥 Recommended Creators
+
+* **Dennis Ivy** – Practical Django tutorials, project-based learning, and deployment guides.
+* **The Net Ninja** – Beginner-friendly Django crash courses and playlists on YouTube.
+* **Pretty Printed (YouTube)** – Focuses on Django, Flask, and other Python web development tutorials.

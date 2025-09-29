@@ -128,6 +128,32 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 ⚠️ In **production**, let your web server (Nginx/Apache) serve these files instead.
 
+## How Statics are Handled in Production vs Development
+
+### 1. Development mode (with `DEBUG=True`)
+
+* In development, Django uses **`django.contrib.staticfiles`** app.
+* That app has a special **static file finder system**:
+
+  * It looks inside each app’s `static/` folder.
+  * It also looks inside any directories you’ve added to `STATICFILES_DIRS`.
+* During development, the **`runserver`** command serves those files directly — no need to run `collectstatic`.
+
+That’s why your project works fine without `collectstatic` in development.
+
+### 2. Production mode (with `DEBUG=False`)
+
+* Django **does not serve static files** in production (for performance and security reasons).
+* You need a web server (e.g., Nginx, Apache, or a CDN) to serve static files.
+* But those servers don’t know how to search through all your apps for scattered `static/` directories.
+
+That’s why Django provides **`collectstatic`**:
+
+* It gathers all static files from each app and from `STATICFILES_DIRS`.
+* It copies them into a single directory (`STATIC_ROOT`).
+* Your web server can then serve everything from that one place.
+
+
 ## Django Static Files Workflow Example
 
 ### Project Structure
