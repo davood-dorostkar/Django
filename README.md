@@ -73,6 +73,7 @@
 - [Optimization](/tutorial/optimization.md)
 - [Switch Database](/tutorial/db-change.md)
 - [Security](/tutorial/security.md)
+- [Deploy on Cloud (Liara)](/tutorial/cloud-deploy.md)
 
 
 ## 🎥 Recommended Creators
