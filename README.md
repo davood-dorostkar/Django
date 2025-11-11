@@ -81,3 +81,11 @@
 * **Dennis Ivy** – Practical Django tutorials, project-based learning, and deployment guides.
 * **The Net Ninja** – Beginner-friendly Django crash courses and playlists on YouTube.
 * **Pretty Printed (YouTube)** – Focuses on Django, Flask, and other Python web development tutorials.
+
+
+# Advanced
+
+## Project setup
+
+- [Docker Setup](/tutorial/docker-setup.md)
+- [Setup DB with dbdiagram.io](/tutorial/db-setup.md)
