@@ -89,3 +89,6 @@
 
 - [Docker Setup](/tutorial/docker-setup.md)
 - [Setup DB with dbdiagram.io](/tutorial/db-setup.md)
+
+## Custom User
+- [Custom User Class](/tutorial/custom-user.md)
