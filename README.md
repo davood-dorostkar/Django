@@ -92,6 +92,7 @@
 
 ## Custom User
 - [Custom User Class](/tutorial/custom-user.md)
+- [Get User Model](/tutorial/get-user.md)
 
 ## Other
 - [Signals](/tutorial/signal.md)
