@@ -126,7 +126,12 @@ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
-⚠️ In **production**, let your web server (Nginx/Apache) serve these files instead.
+⚠️ In **production**, let your web server (Nginx/Apache) serve these files instead. so a good practice is to let Django serve them only on development:
+```py
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
 
 ## How Statics are Handled in Production vs Development
 
